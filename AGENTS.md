@@ -12,7 +12,9 @@ When a task is related to a GitHub Issue (new feature, fix, refactor, chore), Co
 4. Test
 5. Commit
 6. Open PR
-7. Link and Close Issue
+7. Review/CI Pass
+8. Merge PR
+9. Link and Close Issue
 
 Do not skip or reorder steps unless the user explicitly asks to do so.
 
@@ -60,10 +62,23 @@ Do not skip or reorder steps unless the user explicitly asks to do so.
   - Test evidence
   - Issue reference (`Closes #<number>` when applicable)
 
-### 7) Link and Close Issue
+### 7) Review/CI Pass
+
+- Ensure required CI checks pass on the PR.
+- Ensure required review policy is satisfied before merge.
+- If checks fail, fix on the same branch and rerun until green.
+
+### 8) Merge PR
+
+- Merge only after Step 7 is satisfied.
+- Default merge strategy: `squash` unless the user/repo policy requires otherwise.
+- Ensure target base branch is correct before merging.
+
+### 9) Link and Close Issue
 
 - Ensure the PR is linked to the issue via GitHub keywords (`Closes #<number>`).
-- If work is complete, mark issue checklist items done and close the issue.
+- Close the issue after PR merge when work is complete.
+- If needed, update issue checklist items to reflect completed scope.
 - If partially complete, keep issue open and document remaining scope clearly.
 
 ## Default Enforcement Rules
@@ -82,4 +97,3 @@ For tasks not tied to a GitHub issue, Codex may use a simplified flow, but shoul
 - small scoped changes,
 - local verification,
 - clear commit/PR hygiene when requested.
-
