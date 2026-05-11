@@ -15,24 +15,46 @@ AuraRAG/
 └── pyproject.toml         # Project, formatter, linter, and test config
 ```
 
-## Quick Start
+## Requirements
 
-1. Create and activate a virtual environment.
-2. Install dependencies:
+- Conda (Miniconda or Anaconda)
+
+## Installation
+
+1. Create the Conda environment:
 
 ```bash
-pip install -e ".[dev]"
+conda env create -f environment.yml
 ```
 
-3. Run tests:
+2. Activate the environment:
 
 ```bash
-pytest
+conda activate aura-rag
 ```
 
-4. Run lint/format checks:
+3. If dependencies change later, update environment:
 
 ```bash
+conda env update -f environment.yml --prune
+```
+
+## Development Commands
+
+Run from project root:
+
+```bash
+pytest -q
 ruff check .
 ruff format --check .
 ```
+
+## Usage
+
+This repository is currently a scaffolded foundation for AuraRAG:
+
+- Source code lives in `src/aurarag/`
+- Tests live in `tests/`
+- CI runs lint + format check + tests on every push and pull request
+
+As features are added, place runtime entrypoints/scripts under `src/aurarag/` and document new commands here.

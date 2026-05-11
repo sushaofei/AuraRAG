@@ -2,6 +2,23 @@
 
 This document defines repository-level operating rules for Codex in this repo.
 
+## Conda Environment (Required)
+
+Codex should use the Conda environment defined in `/Users/soo/workspace/sourcecode/github/AuraRAG/environment.yml`.
+
+- Environment name: `aura-rag`
+- Create environment:
+  - `conda env create -f environment.yml`
+- Activate environment:
+  - `conda activate aura-rag`
+- Update environment after dependency changes:
+  - `conda env update -f environment.yml --prune`
+- If the environment already exists but is broken, recreate:
+  - `conda env remove -n aura-rag`
+  - `conda env create -f environment.yml`
+
+Before running tests, lint, formatting, commit, or PR operations, Codex should ensure commands run in the `aura-rag` environment.
+
 ## Required SOP For Issue-Driven Work
 
 When a task is related to a GitHub Issue (new feature, fix, refactor, chore), Codex must follow this exact sequence by default:
@@ -44,12 +61,17 @@ Do not skip or reorder steps unless the user explicitly asks to do so.
 ### 4) Test
 
 - Run relevant automated checks locally whenever possible (tests, lint, format checks).
+- Default local test commands:
+  - `pytest -q`
+  - `ruff check .`
+  - `ruff format --check .`
 - If a required tool is unavailable, report exactly what could not be run and why.
 - Do not claim success without real command results.
 
 ### 5) Commit
 
 - Create an intentional commit with a clear message.
+- Before commit, ensure local checks in Step 4 pass (or clearly document exceptions).
 - Prefer referencing the issue in the commit body, for example:
   - `Refs #<number>` for partial work
   - `Closes #<number>` only when the change fully resolves the issue

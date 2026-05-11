@@ -1,0 +1,11 @@
+name: aura-rag
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pytest>=8.0
+  - ruff>=0.5
+  - pip:
+      - -e .[dev]
+
