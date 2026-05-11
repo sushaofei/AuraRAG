@@ -9,6 +9,7 @@ AuraRAG/
 ├── .github/workflows/     # CI pipeline
 ├── docs/                  # Documentation
 ├── src/aurarag/           # Application source code
+│   └── agent/             # Three-layer agent architecture scaffold
 ├── tests/                 # Test suite
 ├── LICENSE
 ├── README.md
@@ -49,12 +50,18 @@ ruff check .
 ruff format --check .
 ```
 
+## Architecture Overview
+
+Three-layer scaffold is located at `src/aurarag/agent/`:
+
+- Perception Layer: `perception/ingestion.py`
+- Cognition Layer: `cognition/retrieval.py`, `cognition/reasoning.py`
+- Action Layer: `action/generation.py`, `action/tool_use.py`, `action/loop.py`
+
+`AgentLoopController` in `action/loop.py` provides a minimal one-turn pipeline that expresses:
+Perception -> Cognition -> Action.
+
 ## Usage
 
-This repository is currently a scaffolded foundation for AuraRAG:
-
-- Source code lives in `src/aurarag/`
-- Tests live in `tests/`
-- CI runs lint + format check + tests on every push and pull request
-
-As features are added, place runtime entrypoints/scripts under `src/aurarag/` and document new commands here.
+This repository currently provides architecture scaffolding and importable interfaces.
+Future work will plug in full parsers, vector stores, LLM calls, and tool execution engines.
