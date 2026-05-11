@@ -14,7 +14,11 @@ class ToolExecutor:
     Placeholder implementation returns structured status only.
     """
 
-    def execute(self, tool_name: str, payload: dict[str, object] | None = None) -> dict[str, object]:
+    def execute(
+        self,
+        tool_name: str,
+        payload: dict[str, object] | None = None,
+    ) -> dict[str, object]:
         return {
             "tool": tool_name,
             "payload": payload or {},
