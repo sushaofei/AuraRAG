@@ -14,7 +14,8 @@ When a task is related to a GitHub Issue (new feature, fix, refactor, chore), Co
 6. Open PR
 7. Review/CI Pass
 8. Merge PR
-9. Link and Close Issue
+9. Switch Back To Base Branch
+10. Link and Close Issue
 
 Do not skip or reorder steps unless the user explicitly asks to do so.
 
@@ -74,7 +75,13 @@ Do not skip or reorder steps unless the user explicitly asks to do so.
 - Default merge strategy: `squash` unless the user/repo policy requires otherwise.
 - Ensure target base branch is correct before merging.
 
-### 9) Link and Close Issue
+### 9) Switch Back To Base Branch
+
+- After merge, switch from the feature branch back to the base branch (for example `main` or the active default development branch).
+- Ensure local working context is no longer on the merged feature branch.
+- Optionally pull latest remote updates for the base branch before starting the next task.
+
+### 10) Link and Close Issue
 
 - Ensure the PR is linked to the issue via GitHub keywords (`Closes #<number>`).
 - Close the issue after PR merge when work is complete.
