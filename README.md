@@ -1,0 +1,2 @@
+# AuraRAG
+An Agentic RAG
